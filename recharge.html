@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <select id="providers">
+            <option value=""> CHOOSE PROVIDER </option>
+            <option value="MTN"> MTN </option>
+            <option value="GLO"> GlO</option>
+            <option value="9MOBILE"> 9MOBILE</option>
+            <option value="AIRTEL"> AIRTEL </option>
+        </select>
+    </div>
+
+    <br>
+
+    <br>
+    <div>
+        <select id="amounts">
+            <option value=""> CHOOSE AMOUNT </option>
+            <option value="100"> 100 </option>
+            <option value="200"> 200</option>
+            <option value="500"> 500</option>
+            <option value="1000"> 1000 </option>
+        </select>
+    </div>
+
+
+    <div>
+        <p> pin: <span id="pin"> </span></p>
+        <button onclick="generatePin()"> generate pin </button>
+    </div>
+
+
+    <div>
+        <input type="text" id="card" value="*311*pin#">
+        <button onclick="loadCard()">load card</button>
+    </div>
+
+
+    // *311*546783245678#
+
+
+
+
+
+</body>
+
+</html>
+<script>
+    let rechargeCards = []
+    rechargeCards[1]
+
+    let providers = document.getElementById('providers')
+    let amount = document.getElementById('amounts')
+
+    function generatePin() {
+
+        if (providers.value === '' || amount.value === '') {
+            alert('all fields are mandatory')
+        } else {
+            let myPin = ''
+            for (let index = 0; index < 12; index++) {
+                myPin += Math.floor(Math.random() * 10) // 0-9
+            }
+            document.getElementById('pin').innerHTML = myPin
+
+            let card = {
+                pin: myPin,
+                provider: providers.value,
+                amount: amount.value,
+                // isUsed : false
+            }
+
+            console.log(card);
+            rechargeCards.push(card)
+            console.log(rechargeCards);
+
+        }
+
+
+
+
+
+    }
+
+    function loadCard() {
+        let cardPin = card.value.trim().slice(5, 17) //45678098765678
+        let foundCard
+
+        if (card.value !== `*311*${cardPin}#`) {
+            alert('invalid card format')
+        } else {
+            
+
+            foundCard = checkIfCardIsValid(cardPin)
+            // for (let index = 0; index < rechargeCards.length; index++) {
+            //     if (rechargeCards[index].pin === cardPin) {
+            //         foundCard = rechargeCards[index]
+            //         break
+            //     }
+            // }
+
+            if (foundCard === undefined) {
+                alert('invalid card pin')
+            } else {
+                alert(`you've successfully recharged ${foundCard.provider} worth N${foundCard.amount}`)
+            }
+
+
+        }
+
+
+
+    }
+
+
+
+    function checkIfCardIsValid(c) {
+        for (let index = 0; index < rechargeCards.length; index++) {
+            if (rechargeCards[index].pin === c) {
+                return rechargeCards[index]
+                break
+            }
+        }
+
+        return undefined
+
+    }
+
+
+    // if (true && true && false) {
+
+    // }
+
+    let val = 5
+
+    val = val + 6
+
+
+</script>
