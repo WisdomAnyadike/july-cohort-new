@@ -43,8 +43,11 @@
         <button onclick="loadCard()">load card</button>
     </div>
 
+    <p> MTN balance: <span id="mtnbalance"> </span></p>
+    <p> GLO balance: <span id="globalance"> </span></p>
+    <p>AIRTEL balance: <span id="airtelbalance"> </span></p>
+    <p> 9MOBILE balance: <span id="9mobilebalance"> </span></p>
 
-    // *311*546783245678#
 
 
 
@@ -55,7 +58,27 @@
 </html>
 <script>
     let rechargeCards = []
-    rechargeCards[1]
+
+    let balances = {
+        mtnbalance: 0,
+        globalance: 0,
+        airtelbalance: 0,
+        "9mobilebalance": 0,
+    }
+
+   function displayBalance() {
+    for (const key in balances) { 
+       document.getElementById(key).innerHTML = balances[key]
+   }
+   }
+
+   displayBalance()
+
+
+    console.log(balances.globalance);
+    console.log(balances['globalance']);
+
+
 
     let providers = document.getElementById('providers')
     let amount = document.getElementById('amounts')
@@ -75,17 +98,14 @@
                 pin: myPin,
                 provider: providers.value,
                 amount: amount.value,
-                // isUsed : false
+                hasCardBeenUsed : false
             }
 
-            console.log(card);
+
             rechargeCards.push(card)
-            console.log(rechargeCards);
+
 
         }
-
-
-
 
 
     }
@@ -97,20 +117,37 @@
         if (card.value !== `*311*${cardPin}#`) {
             alert('invalid card format')
         } else {
-            
-
-            foundCard = checkIfCardIsValid(cardPin)
-            // for (let index = 0; index < rechargeCards.length; index++) {
-            //     if (rechargeCards[index].pin === cardPin) {
-            //         foundCard = rechargeCards[index]
-            //         break
-            //     }
-            // }
+            // foundCard = checkIfCardIsValid(cardPin)
+            for (let index = 0; index < rechargeCards.length; index++) {
+                if (rechargeCards[index].pin === cardPin) {
+                    foundCard = rechargeCards[index]
+                    break
+                }
+            }
 
             if (foundCard === undefined) {
                 alert('invalid card pin')
-            } else {
+            } else if (foundCard.hasCardBeenUsed === true){
+                alert('this card has been used')
+            }
+            
+            else {
                 alert(`you've successfully recharged ${foundCard.provider} worth N${foundCard.amount}`)
+                if (foundCard.provider === 'MTN') {
+                    balances.mtnbalance = balances.mtnbalance + Number(foundCard.amount) 
+                } else if (foundCard.provider === 'GLO') {
+                    balances.globalance = balances.globalance + Number(foundCard.amount)
+                }else if (foundCard.provider === 'AIRTEL'){
+                    balances.airtelbalance = balances.airtelbalance + Number(foundCard.amount)
+                }else{
+                    balances['9mobilebalance'] = balances['9mobilebalance'] + Number(foundCard.amount)
+                }
+                
+                foundCard.hasCardBeenUsed = true
+                displayBalance()
+                console.log(rechargeCards);
+                console.log(balances);
+
             }
 
 
@@ -135,13 +172,28 @@
     }
 
 
+
     // if (true && true && false) {
 
     // }
 
-    let val = 5
+    // let val = 5
 
-    val = val + 6
+    // val = val + 6
+
+
+   
+
+    // let arr = [1,2,4,5]
+    // // arr.reverse()
+    // for (const num of arr) {
+    //     console.log(num);
+    // }
+
+
+    
+
+
 
 
 </script>
