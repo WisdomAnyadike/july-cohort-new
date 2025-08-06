@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student ID Display</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+    <link rel="shortcut icon" href="images/sqi.webp" type="image/x-icon" />
+    <link rel="stylesheet" href="id.css" />
+</head>
+
+<body>
+    <div class="body-con">
+        <button id="btn" onclick="prev()">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" id="arrow" viewBox="0 -960 960 960" width="24px"
+                fill="grey">
+                <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
+            </svg>
+        </button>
+        <div class="body-wrapper">
+            <div class="profile">
+                <div class="logo-wrapper">
+                    <img src="images/sqi.webp" alt="" />
+                </div>
+                <div class="name-wrapper"><span>SQI COLLEGE OF ICT IBADAN</span></div>
+                <div class="role-wrapper">STUDENT</div>
+                <div class="profile-picture-wrapper">
+                    <img id="image" src="" alt="" />
+                </div>
+                <div class="profile-name">
+                    <span id="name"></span>
+                </div>
+                <div class="course" id="course"></div>
+            </div>
+            <div class="id">
+                <div><span>Student ID</span></div>
+                <div class="empty-div"></div>
+                <div><span id="ID"></span></div>
+            </div>
+            <div class="site-url"><span>edu.sqi.ng</span></div>
+        </div>
+        <button id="btn1" onclick="next()">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" id="arrow1" viewBox="0 -960 960 960" width="24px"
+                fill="grey">
+                <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
+            </svg>
+        </button>
+    </div>
+</body>
+
+</html>
+<script>
+
+    const idArray = [
+        {
+            img: "miles.png",
+            name: "Miles Gonzalo Morales",
+            course: "Full-Stack Web Development",
+            ID: "240280",
+        },
+        {
+            img: "gwen.jpg",
+            name: "Gwendolyne Maxine Stacy",
+            course: "Data Science",
+            ID: "290340",
+        },
+        {
+            img: "miguel.jpg",
+            name: "Miguel O'Hara",
+            course: "Cybersecurity",
+            ID: "240300",
+        },
+        {
+            img: "porker.jpg",
+            name: "Peter Benjamin Porker",
+            course: "UI/UX",
+            ID: "250300",
+        },
+        {
+            img: "prabhakar.jpg",
+            name: "Pavitr Prabhakar",
+            course: "Machine Learning",
+            ID: "240281",
+        },
+        {
+            img: "hobie.jpg",
+            name: "Hobart 'Hobie' Brown",
+            course: "Graphics Design",
+            ID: "240450",
+        },
+        {
+            img: "benjamin.jpg",
+            name: "Peter Benjamin Parker",
+            course: "Computer-Aided-Design",
+            ID: "240210",
+        },
+        {
+            img: "peni.jpg",
+            name: 'Peni "Penelope" Parker',
+            course: "Robotics",
+            ID: "240212",
+        },
+        {
+            img: "jessica.webp",
+            name: "Jessica Miriam Drew",
+            course: "Python",
+            ID: "240119",
+        },
+        {
+            img: "noir.jpg",
+            name: "Peter Parker(Noir)",
+            course: "C",
+            ID: "000002",
+        },
+    ];
+
+    let currentIndex = 0
+
+
+
+    function displayCard() {
+        document.getElementById('name').innerHTML = idArray[currentIndex].name
+        document.getElementById('image').src = idArray[currentIndex].img
+        document.getElementById('course').innerHTML = idArray[currentIndex].course
+        document.getElementById('ID').innerHTML = idArray[currentIndex].ID
+    }
+
+
+    displayCard()
+
+    function next() {
+        currentIndex = (currentIndex === idArray.length - 1) ? 0 : currentIndex + 1
+        displayCard()
+    }
+
+    function prev() {
+        currentIndex = (currentIndex === 0) ? idArray.length -1 : currentIndex -1;
+        displayCard()
+    }
+
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,111 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background-color: #000e42;
+    color: #000e42;
+    font-family: "Poppins", sans-serif;
+    height: 100vh;
+    width: 100%;
+  }
+  
+  .logo-wrapper img {
+    width: 80px;
+  }
+  
+  .profile-picture-wrapper img {
+    border: 3px solid #000e42;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+  }
+  
+  .profile {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .body-wrapper {
+    align-items: center;
+    background-color: white;
+    border: 2px solid lightblue;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2),
+      0 6px 20px rgba(255, 255, 255, 0.19);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: fit-content;
+    justify-content: center;
+    margin: 100px auto;
+    padding: 5px 0;
+    width: 250px;
+  }
+  
+  .course {
+    color: orangered;
+    font-size: 14px;
+  }
+  
+  .name-wrapper,
+  .profile-name,
+  .course {
+    font-weight: 700;
+  }
+  
+  .name-wrapper {
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  .role-wrapper,
+  .site-url {
+    background-color: #000e42;
+    color: rgb(0, 221, 255);
+    text-align: center;
+  }
+  
+  .role-wrapper {
+    padding: 2px 20px;
+  }
+  
+  .site-url {
+    font-size: 12px;
+    letter-spacing: 8px;
+    width: 100%;
+  }
+  
+  .id {
+    align-items: center;
+    color: black;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .empty-div {
+    border-right: 2px solid black;
+    height: 20px;
+  }
+  
+  .body-con {
+    align-items: center;
+    display: flex;
+    gap: 20px;
+    width: fit-content;
+    margin: auto;
+  }
+  
+  button {
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+  }
+  
