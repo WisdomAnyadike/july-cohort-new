@@ -95,11 +95,52 @@
 
     console.log(filteredAtLeast5CharsNames);
 
+    //some - looking to return true when at least one memner of the array meets the condition given , when all members do not meet the condition , it returns false
+
+    let numbers3 = [2, 56, 3, 6, 9, '24']
+
+    let isAtLeastOneNumGreatherThan20 = numbers3.some(function (num, i, arr) {
+        console.log(`i ran for ${num}`);
+        return num > 20
+    })
+
+    console.log(isAtLeastOneNumGreatherThan20);
+
+
+    //every - looking to return true when every memner of the array meets the condition given , when at least one member does not meet the condition , it returns false
+
+    let areAllMembersOfArrNumbers = numbers3.every(function (num) {
+        return typeof num === "number"
+    })
+
+    console.log(areAllMembersOfArrNumbers);
+
+    //reduce
+    let total = numbers3.reduce(function (a, c) { return a + +c }, 0)
+    console.log(total);
 
 
 
 
 
+
+
+
+
+
+
+
+    let numbers4 = [2, 56, 3, 6, 9, '24']
+    let joinedVal = numbers4.join('+')
+    let ans = eval(joinedVal)
+    console.log(ans);
+
+    let sum = 0
+    for (let index = 0; index < numbers4.length; index++) {
+        sum = sum + +(numbers4[index])
+    }
+
+    console.log(sum);
 
 
 

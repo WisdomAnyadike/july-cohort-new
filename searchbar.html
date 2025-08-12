@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="searchValue" oninput="search()">
+
+    <div id="preview">
+
+    </div>
+
+</body>
+
+</html>
+<script>
+
+    let arrOfProducts = ['rice', 'beans', 'onions', 'groundnut']
+
+    function display(array) {
+        preview.innerHTML = ''
+        for (let index = 0; index < array.length; index++) {
+            preview.innerHTML += `<p> <button> ${array[index]} </button> </p>`
+        }
+    }
+
+    // let arr = [1, 2, 3, 4, 5]
+
+
+    display(arrOfProducts)
+
+
+    function search() {
+        let searchValue = document.getElementById('searchValue').value.toLowerCase().replaceAll(' ', '') // e
+
+        let filteredItems = arrOfProducts.filter(function (food) {
+            return food.toLowerCase().includes(searchValue)
+        })
+        console.log(filteredItems)
+
+        if (filteredItems.length === 0) {
+            preview.innerHTML = `<p> product does not exist </p>`
+        } else {
+            display(filteredItems)
+        }
+
+
+
+    }
+
+
+
+
+
+    function sayName(username) {
+        console.log(username);
+    }
+
+    sayName('kola')
+    sayName('temi')
+
+
+    let val = 'hello'.split('')
+
+    let newa = [1, 2, 4]
+    let newb = [1, 2, 4]
+
+</script>
