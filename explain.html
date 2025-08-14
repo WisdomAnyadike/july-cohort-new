@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="email" id="email">
+</body>
+
+
+
+
+</html>
+<script>
+    let myemail = 'wisdom@gmail.com'
+
+    let database = [
+
+        {
+            name: 'wisdom',
+            email: 'wisdom@gmail.com',
+            password: 'wisdom',
+            terms: false
+        },
+        {
+            name: 'dave',
+            email: 'dave@gmail.com',
+            password: 'dave',
+            terms: false
+        },
+        {
+            name: 'daniel',
+            email: 'daniel@gmail.com',
+            password: 'daniel',
+            terms: false
+        }
+
+
+
+
+    ]
+
+    let foundUser = database.find((user) => {
+        return user.email == myemail
+    }) 
+    //  {
+        //     name: 'wisdom',
+        //     email: 'wisdom@gmail.com',
+        //     password: 'wisdom',
+        //     terms: false
+        // }
+
+
+</script>
