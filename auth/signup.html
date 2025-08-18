@@ -147,11 +147,9 @@
 
             database.push(userObj)
             localStorage.setItem('julyDatabase', JSON.stringify(database))
-
             displayTable()
-
             alert('sign up successful')
-            
+            window.location.href = 'login.html'
         }
 
     }

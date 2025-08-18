@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1> welcome <span id="username"> </span></h1>
+    <img id="image" width="100" height="100" alt="">
+
+    <input type="file" id="myFile" accept=".png,.jpg" onchange="pickPicture()">
+
+    <button onclick="logOut()"> log out </button>
+
+</body>
+
+</html>
+<script>
+
+    let database = JSON.parse(localStorage.getItem('julyDatabase'))
+    let currentUserIndex = JSON.parse(localStorage.getItem('authUserIndex'))
+    let currentUser = database[currentUserIndex]
+
+
+
+    function checkUserAuth() {
+        console.log(currentUser, currentUserIndex);
+        if (!currentUser) {
+            document.body.innerHTML = ''
+            alert('unauthorized')
+            window.location.href = 'login.html'
+        }
+    }
+
+
+    checkUserAuth()
+
+
+    function displayUsername() {
+        username.innerHTML = currentUser.name
+    }
+
+    displayUsername()
+
+
+    // let arr = [1, 2, 3, 4]
+    // arr[2]
+
+    function logOut() {
+        localStorage.removeItem('authUserIndex')
+        alert('logout successful')
+        window.location.href = 'login.html'
+    }
+
+
+    function pickPicture() {
+        let file = document.getElementById('myFile').files[0]
+
+        if (!file) {
+            alert('please attach a file')
+            return
+        }
+
+        if (file.type !== 'image/jpeg') {
+            alert('please send a jpg file')
+            return
+        }
+
+        let reader = new FileReader()
+
+        reader.readAsDataURL(file)
+
+        reader.addEventListener('load', (ev) => {
+            let result = ev.target.result
+            console.log(result);
+            image.src = result
+
+
+        })
+
+
+
+
+    }
+
+    let arr = new Array()
+    let obj = new Object()
+
+
+</script>

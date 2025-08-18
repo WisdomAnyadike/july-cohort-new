@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <form class="bg-white text-danger p-2">
+
+        <div class="p-3">
+            <label for="email"> Email: </label>
+            <input type="email" id="email">
+        </div>
+        <div class="p-3">
+            <label for="password">Password: </label>
+            <input type="text" id="password">
+        </div>
+
+
+        <button type="button" id="buttonTag" class="btn btn-danger m-2" onclick="login()"> Log In </button>
+
+    </form>
+</body>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    let database = JSON.parse(localStorage.getItem('julyDatabase'))
+
+
+    function login() {
+
+        let myEmail = document.getElementById('email').value.trim()
+        let myPassword = document.getElementById('password').value.trim()
+        if (!myEmail || !myPassword) {
+            alert('all fields are mandatory')
+        } else {
+            buttonTag.innerHTML = 'loading...'
+            buttonTag.disabled = true
+
+
+            setTimeout(() => {
+                let foundUser = database.find((user) => { return user.email === myEmail })
+
+                if (!foundUser) {
+                    alert('user doesnt exist , please sign up')
+                    window.location.href = 'signup.html'
+
+                } else {
+                    if (foundUser.password !== myPassword) {
+                        alert('invalid email or password')
+                        buttonTag.innerHTML = 'Log In'
+                        buttonTag.disabled = false
+                    } else {
+                        alert('login successful')
+                        let currentUserIndex = database.findIndex((user) => {
+                            return user.email === foundUser.email
+                        })
+                        console.log(currentUserIndex);
+                        localStorage.setItem('authUserIndex', currentUserIndex)
+                        window.location.href = 'dashboard.html'
+                    }
+
+
+                }
+
+            }, 3000);
+
+
+
+        }
+
+    }
+
+
+
+</script>
