@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1 class="h1wow" style="height: 100px; background-color: yellow;">
+
+    </h1>
+
+    <div>
+        wow
+    </div>
+
+
+</body>
+
+</html>
+<script>
+    // event argument, javascript events , add event listener , set interval , destructuring 
+
+    // let  word = 'hello class'
+
+
+    function hello(word = 'default') {
+        console.log(word);
+    }
+
+
+    hello()
+
+
+
+    function runSmth(ev) {
+        console.log(ev);
+        // e.srcElement.innerHTML = 'HELLO'
+        ev.target.nextElementSibling.style.backgroundColor = 'purple'
+    }
+
+    function changeColor(e) {
+        console.log(e);
+        console.log('you hovered');
+    }
+
+    //onmouseover="changeColor()" onclick="runSmth(event)"
+
+    document.querySelector('.h1wow').addEventListener('mouseover', changeColor)
+    document.querySelector('.h1wow').addEventListener('click', runSmth)
+
+
+
+
+    // setTimeout(() => {
+    //     console.log('wow');
+    // }, 3000)
+
+    // setInterval(() => {
+    //     console.log('hello');
+    // }, 3000)
+
+    document.body.style.backgroundColor = 'pink'
+
+    function genRandomHexa() {
+        let hexa = ''
+        let arr = ['a', 'b', 'c', 'd', 'e', 'f', '0', '1', '2', '3', '4', '5', '6']
+        for (let index = 0; index < 6; index++) {
+            let randomNum = Math.floor(Math.random() * arr.length) // 0 -12
+            hexa = hexa + arr[randomNum]
+        }
+        return `#${hexa}`
+    }
+
+    let count = 20
+
+
+    let colorInterval = setInterval(() => {
+        count--
+        console.log(count);
+        document.body.style.backgroundColor = generateRGB()
+        if (count === 0) {
+            clearInterval(colorInterval)
+        }
+    }, 1000);
+
+
+    //rgb(255,255,255)
+    function generateRGB() {
+        // function create() {
+        //     return Math.floor(Math.random() * 256)
+        // }
+
+        // return `rgb(${create()},${create()},${create()})`
+        let first = Math.floor(Math.random() * 256) //0-255
+        let second = Math.floor(Math.random() * 256)
+        let third = Math.floor(Math.random() * 256)
+
+        return `rgb(${first},${second},${third})`
+    }
+
+    console.log(generateRGB());
+
+
+    /// obj destructuring 
+
+    let myObj = {
+        name: 'wisdom',
+        classes: 'javascript',
+        school: 'sqi'
+    }
+
+    let myObj2 = {
+        name2: 'wisdom',
+        classes2: 'javascript',
+        school2: 'sqi'
+    }
+
+    let arr = [
+        {
+            name: 'wisdom',
+            classes: 'javascript',
+            school: 'sqi'
+        },
+        {
+            name: 'wisdom1',
+            classes: 'javascript1',
+            school: 'sqi1'
+        }
+        , {
+            name: 'wisdom2',
+            classes: 'javascript2',
+            school: 'sqi2'
+        }
+    ]
+
+    for (const { name } of arr) {
+        console.log(name);
+    }
+
+
+
+
+    let { school, name, classes } = myObj
+    let { name2, classes2, school2 } = myObj2
+    myObj.classes
+
+    console.log(name);
+
+
+
+
+
+
+
+</script>

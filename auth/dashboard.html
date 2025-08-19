@@ -65,26 +65,16 @@
             return
         }
 
-        if (file.type !== 'image/jpeg') {
-            alert('please send a jpg file')
-            return
-        }
-
         let reader = new FileReader()
 
         reader.readAsDataURL(file)
 
         reader.addEventListener('load', (ev) => {
+            console.log(ev);
             let result = ev.target.result
-            console.log(result);
+            // console.log(result);
             image.src = result
-
-
         })
-
-
-
-
     }
 
     let arr = new Array()
