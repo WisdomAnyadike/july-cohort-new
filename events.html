@@ -150,6 +150,116 @@
 
     console.log(name);
 
+    const rectangle = {
+        width: 20,
+        height: 10,
+        area: 200,
+
+    }
+
+
+    let { height: h, area: a, width: w, lol: l = 45 } = rectangle
+
+    console.log(l, h, a, w);
+
+    // Without destructuring
+
+    const rect = {
+        width: 20,
+        height: 10
+    }
+
+    const rect2 = {
+        width: 200,
+        height: 150
+    }
+
+
+
+    const hello1 = {
+        width: 1000,
+        height: 15
+    }
+
+    const calculatePerimeter = function ({ width, height }) {
+        return 2 * (width + height)
+    }
+
+    console.log(calculatePerimeter(rect))
+    console.log(calculatePerimeter(rect2))
+    console.log(calculatePerimeter(hello1))
+
+
+
+    const todoList = [
+        {
+            task: 'Prepare JS Test',
+            time: '4/1/2020 8:30',
+            completed: true
+        },
+        {
+            task: 'Give JS Test',
+            time: '4/1/2020 10:00',
+            completed: false
+        },
+        {
+            task: 'Assess Test Result',
+            time: '4/1/2020 1:00',
+            completed: false
+        }
+    ]
+
+
+    todoList.forEach(({ task, time, completed }, i, arr) => {
+        console.log(task, time, completed);
+    })
+
+
+    const nums = [10, 2, 33, 4, 45, 6, 72, 8, 9, 10]
+    let [i, e, x, z, o, ...rest] = nums
+    console.log(typeof (rest));
+    Array.isArray(rest)
+
+    // nums.sort((a, b) => { return a - b })
+    let maxNum = Math.max(...nums)
+
+    let vals = [...nums, 35]
+    console.log(vals);
+
+
+
+    // [-1, 0, 1]
+    // nums.sort((a, b) => {
+    //     if (a > b) {
+    //         return 1
+    //     } else if (b > a) {
+    //         return -1
+    //     } else {
+    //         return 0
+    //     }
+    // })
+
+
+
+    console.log(nums);
+
+
+    let user = {
+        name: 'dave'
+    }
+
+
+    let sameUser = { ...user, class: 'jss3' }
+    console.log(sameUser);
+
+    let anotherUser = { ...sameUser, name: 'tolu' }
+
+
+
+
+
+
+
 
 
 
