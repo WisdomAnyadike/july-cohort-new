@@ -8,7 +8,9 @@
 </head>
 
 <body>
-    <input type="email" id="email">
+
+
+
 </body>
 
 
@@ -16,6 +18,12 @@
 
 </html>
 <script>
+    let arr = ['<p> hey </p>', '<p> hey </p>', '<p> hey </p>', '<p> hey </p>']
+
+    document.body.innerHTML = arr
+
+
+
     let myemail = 'wisdom@gmail.com'
 
     let database = [
@@ -46,7 +54,7 @@
 
     let foundUser = database.find((user) => {
         return user.email == myemail
-    }) 
+    })
     //  {
         //     name: 'wisdom',
         //     email: 'wisdom@gmail.com',

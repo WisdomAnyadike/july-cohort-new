@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="api.css">
+</head>
+
+<body>
+
+    <div id="contain" style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+
+
+    </div>
+
+</body>
+
+</html>
+<script>
+    // CRUD OPERATIONS
+    // http requests  1. GET  2.POST 3.PATCH/PUT 4.DELETE
+    // three tier architecture - client - server - database
+    // backend - provides you with an endpoint
+
+    function displayAllProducts() {
+        contain.innerHTML = 'loading...'
+        fetch('https://dummyjson.com/products'
+        ).then((response) => { return response.json() }).then((data) => {
+
+            console.log(data.products)
+            localStorage.setItem('products', JSON.stringify(data.products))
+            contain.innerHTML = ''
+            data.products.forEach((element, i, arr) => {
+                contain.innerHTML += ` <div onclick="seeMore(${+i + 1})" class="product-card" style="margin:10px;">
+            <div class="badge">${element.availabilityStatus}</div>
+            <div class="product-tumb">
+                <img src="${element.images[0]}" alt="">
+            </div>
+            <div class="product-details">
+                <span class="product-catagory"> ${element.category} </span>
+                <h4><a href=""> ${element.title}</a></h4>
+                <p> ${element.description}</p>
+                <div class="product-bottom-details">
+                    <div class="product-price"><small>$${element.price}</small>$${(((element.discountPercentage / 100) * element.price) + element.price).toFixed(2)}</div>
+                    <div class="product-links">
+                        <a href=""><i class="fa fa-heart"></i></a>
+                        <a href=""><i class="fa fa-shopping-cart"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>`
+            });
+
+
+        }).catch((error) => {
+            console.log(error);
+        })
+
+
+    }
+
+    displayAllProducts()
+
+
+    // async function getAllProducts() {
+    //     try {
+    //         const res = await fetch('https://dummyjson.com/products')
+    //         const data = await res.json()
+    //         return data
+    //     } catch (error) {
+    //         return error
+    //     }
+
+    // }
+
+
+
+
+
+
+
+    function seeMore(index) {
+        contain.innerHTML = 'loading..'
+        let randomProducts = []
+
+        let allProducts = JSON.parse(localStorage.getItem('products'))
+
+        for (let index = 0; index < 4; index++) {
+            let randomNum = Math.floor(Math.random() * allProducts.length) // 0 -29 
+            randomProducts.push(allProducts[randomNum])
+        }
+
+        function displayFourProducts() {
+            return randomProducts.map((products) =>
+                `<div class="section" onclick="seeMore(${products.id})">
+                    <i class="fas fa-seedling fa-3x"></i>
+                    <h2> ${products.title}</h2>
+                    <p>${products.category}</p>
+                    <p class="price">${products.price}</p>
+                    <button><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>`
+            )
+        }
+
+        fetch(`https://dummyjson.com/products/${index}`).then((res) => { return res.json() }).then((data) => {
+            console.log(data);
+            contain.innerHTML = ` 
+           
+            <button onclick="displayAllProducts()" style="position:fixed; top:0; left:0;"> go back </button>
+<main style="position:relative;>
+ 
+            
+  <div id="container">
+
+    <h1> ${data.title} </h1>
+    <h2> ${data.brand || 'generic'}</h2>
+    <p> ${data.description}</p>
+    <b> ${data.category} </b>
+  </div>
+
+  <div class="grid">
+  ${displayFourProducts().join('')}
+   
+
+    
+     
+
+  </div>
+
+</main>
+            
+            
+            `
+
+
+        }).catch((err) => {
+            console.log(err);
+            contain.innerHTML = ' <button> go back , error occured</button>'
+        })
+
+    }
+
+
+
+
+
+
+
+    // function run(params) {
+    //     return {
+    //         name: "david"
+    //     }
+    // }
+
+
+
+    // let myObj = {
+    //     name: 'david',
+    //     sayName: function () {
+    //         console.log('david');
+    //     }
+    // }
+
+    // myObj.sayName()
+    // let myProducts = JSON.parse(localStorage.getItem('products')).slice(0, 4)
+    // console.log(myProducts.map((products) =>
+    //     `<div class="section">
+    //                 <i class="fas fa-seedling fa-3x"></i>
+    //                 <h2> ${products.title}</h2>
+    //                 <p>${products.category}</p>
+    //                 <p class="price">${products.price}</p>
+    //                 <button><i class="fas fa-cart-plus"></i> Add to Cart</button>
+    //             </div>`
+    // ));
+
+</script>
