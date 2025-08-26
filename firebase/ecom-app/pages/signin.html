@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/signup.css">
+    <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-auth-compat.js"></script>
+</head>
+
+<body class="flex center">
+    <div class="page-grid grid">
+        <section class="banner grid center">
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEghdXVxxAlp1t_cKedjD8EZ9toGFYAPe_c40Sdogsj12fzOjV65u4rsHBVo7jnViKGu7pFKEncx3FcIh9GAJqz0IXOwuX1HW5hA_9uy58L4bOj-uZUWTysmgi9WMf1FTdD_EmL2xeVFsJhSf3gr8c5tiGX8frQdZtUv1ny-LEui0HDr0RmCCmY0bUaA"
+                alt="">
+        </section>
+        <section class="form-wrapper grid center">
+            <form action="" class="form-section">
+                <div class="header">
+                    <h1>Welcome Back</h1>
+                    <p>Welcome back, Please enter your details</p>
+                </div>
+                <div class="field">
+                    <label for="">Email</label>
+                    <input type="text" id="email" placeholder="Enter Your name">
+                </div>
+                <div class="field">
+                    <label for="">Password</label>
+                    <input type="password" id="password" placeholder="Enter Your password">
+                </div>
+                <div class="pass-section flex">
+                    <div class="input-item">
+                        <input type="checkbox" name="" id="">
+                        <span>Remember password</span>
+                    </div>
+                    <a href="#0">Forgot password?</a>
+                </div>
+                <button type="button" class="btn btn-primary" id="button" onclick="signIn()">Sign in</button>
+                <div class="btn google-sign-in flex center">
+                    <svg width="148" height="148" viewBox="0 0 148 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M144.156 75.6583C144.156 70.7639 143.759 65.8431 142.912 61.0281H75V88.754H113.89C112.276 97.6962 107.091 105.607 99.4982 110.633V128.623H122.7C136.325 116.083 144.156 97.5639 144.156 75.6583Z"
+                            fill="#4285F4" />
+                        <path
+                            d="M75.0002 146.005C94.4189 146.005 110.795 139.629 122.726 128.623L99.5249 110.633C93.0696 115.025 84.736 117.512 75.0266 117.512C56.2429 117.512 40.3164 104.839 34.6019 87.8016H10.6592V106.347C22.8819 130.661 47.777 146.005 75.0002 146.005Z"
+                            fill="#34A853" />
+                        <path
+                            d="M34.5752 87.8016C31.5592 78.8595 31.5592 69.1766 34.5752 60.2345V41.6888H10.659C0.446995 62.0335 0.446995 86.0026 10.659 106.347L34.5752 87.8016Z"
+                            fill="#FBBC04" />
+                        <path
+                            d="M75.0002 30.498C85.2651 30.3393 95.1861 34.2018 102.62 41.2921L123.176 20.7357C110.16 8.51303 92.8844 1.7932 75.0002 2.00485C47.7769 2.00485 22.8819 17.3493 10.6592 41.6889L34.5754 60.2346C40.2634 43.1703 56.2164 30.498 75.0002 30.498Z"
+                            fill="#EA4335" />
+                    </svg>
+                    Sign in with Google
+                </div>
+                <div class="footer">
+                    <p>Dont have an account? <a href="../index.html">Sign up</a></p>
+                </div>
+            </form>
+        </section>
+    </div>
+
+</html>
+<script src="../js/signin.js"></script>

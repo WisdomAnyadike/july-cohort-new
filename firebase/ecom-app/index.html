@@ -5,13 +5,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="./css/signup.css">
+  <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-auth-compat.js"></script>
 </head>
 
-<body>
-  hello students
-</body>
+<body class="flex center">
+  <div class="page-grid grid">
+    <section class="banner grid center">
+      <img
+        src="https://blogger.googleusercontent.com/img/a/AVvXsEghdXVxxAlp1t_cKedjD8EZ9toGFYAPe_c40Sdogsj12fzOjV65u4rsHBVo7jnViKGu7pFKEncx3FcIh9GAJqz0IXOwuX1HW5hA_9uy58L4bOj-uZUWTysmgi9WMf1FTdD_EmL2xeVFsJhSf3gr8c5tiGX8frQdZtUv1ny-LEui0HDr0RmCCmY0bUaA"
+        alt="">
+    </section>
+    <section class="form-wrapper grid center">
+      <form action="" class="form-section">
+        <div class="header">
+          <h1>Welcome Back</h1>
+          <p>Welcome back, Please enter your details</p>
+        </div>
+        <div class="field">
+          <label for="">Full Name </label>
+          <input type="text" id="fullname" placeholder="Enter your name">
+        </div>
+        <div class="field">
+          <label for="">Email</label>
+          <input type="text" id="email" placeholder="Enter your email">
+        </div>
+        <div class="field">
+          <label for="">Password</label>
+          <input type="password" id="password" placeholder="Enter your password">
+        </div>
+        <div class="field">
+          <label for=""> Confirm password </label>
+          <input type="password" id="confirmpassword" placeholder="Confirm your password">
+        </div>
+
+        <button type="button" id="button" class="btn btn-primary" onclick="signUp()"> Sign up </button>
+        <div class="footer">
+          <p>Already have an account? <a href="../ecom-app/pages/signin.html">Sign in</a></p>
+        </div>
+      </form>
+    </section>
+  </div>
 
 </html>
-<script>
-
-</script>
+<script src="./js/signup.js"></script>
