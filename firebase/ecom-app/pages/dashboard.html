@@ -1,14 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Dashboard — Chat</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-auth-compat.js"></script>
 </head>
 
-<body>
-    welcome user
+<body class="app-root">
+    <nav class="nav">
+        <div class="nav-left">
+            <button class="menu-btn" aria-label="Open menu">☰</button>
+            <div class="brand">
+                <h1>July app</h1>
+                <span class="nav-welcome">Welcome back, <span id="navName"> loading... </span></span>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <div class="search-pill">
+                <input id="globalSearch" placeholder="Search chats, people..." />
+                <button aria-hidden>🔎</button>
+            </div>
+
+            <div class="profile">
+
+                <div class="avatar" id="avatar">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="profile">
+                        <defs>
+                            <linearGradient id="g" x1="0" x2="1">
+                                <stop offset="0" stop-color="#7b5cff" />
+                                <stop offset="1" stop-color="#6944c5" />
+                            </linearGradient>
+                        </defs>
+                        <rect width="100" height="100" rx="18" fill="url(#g)" />
+                        <text x="50" y="58" font-family="Poppins, sans-serif" font-weight="700" font-size="42"
+                            fill="#fff" text-anchor="middle">W</text>
+                    </svg>
+                </div>
+                <div class="profile-actions">
+
+                    <a class="btn btn-primary small" id="toProfile" href="./profile.html">
+                        Profile
+                    </a>
+
+                    <a class="btn btn-primary small" id="toLogout" onclick="logOut()">
+                        logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="dashboard-grid">
+
+
+
+        <section class="chat-area">
+            <header class="chat-header">
+                <div class="chat-title">Javascript Class</div>
+                <div class="chat-sub">Online</div>
+            </header>
+
+            <div class="messages" id="messages">
+                <div class="msg incoming">
+                    <div class="bubble">Hey! Ready to test the new flow?</div>
+                    <div class="meta">2:10 PM</div>
+                </div>
+
+                <div class="msg outgoing">
+                    <div class="bubble">Almost — pushing the update now.</div>
+                    <div class="meta">2:11 PM</div>
+                </div>
+
+                <div class="msg incoming">
+                    <div class="bubble">Nice. I'll check after deploy.</div>
+                    <div class="meta">2:12 PM</div>
+                </div>
+            </div>
+
+            <div class="composer">
+                <button class="attach" title="Attach">＋</button>
+                <textarea id="messageInput" placeholder="Type a message..." rows="1"></textarea>
+                <button class="send" id="sendBtn">Send ➤</button>
+            </div>
+        </section>
+
+
+        <aside class="sidebar right">
+            <div class="sidebar-header">Details</div>
+            <div class="detail-card">
+                <h3>Conversation details</h3>
+                <p>Private chat with Jane Doe. Last seen 10 minutes ago.</p>
+                <hr />
+                <h4>Members</h4>
+                <ul class="members">
+                    <li>Jane Doe — Product</li>
+                    <li>You — Frontend</li>
+                    <li>R&D — Research</li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+
 </body>
 
 </html>
+<script src="../js/dashboard.js"></script>

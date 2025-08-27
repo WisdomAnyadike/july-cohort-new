@@ -1,0 +1,97 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Profile — CollabStart</title>
+    <link rel="stylesheet" href="../css/profile.css">
+
+    <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-auth-compat.js"></script>
+    <style>
+        #modal2 {
+            display: flex;
+        }
+    </style>
+
+</head>
+
+<body class="profile-root">
+    <div id="modal2"
+        style="z-index: 100; width: 100%; height: 100vh; display: flex;  align-items: center; justify-content: center; background-color: purple; color: white;">
+        loading...
+    </div>
+
+    <nav class="nav">
+        <div class="brand" onclick="(()=>window.location.href = './dashboard.html')()">Julyapp</div>
+
+        <div class="nav-right">Welcome back, <strong id="userShort"> loading...</strong></div>
+    </nav>
+
+    <main class="container">
+        <section class="card profile-card">
+            <h2>Profile</h2>
+            <p class="muted">Edit your display name, change profile photo, or update your password</p>
+
+            <div class="profile-grid">
+                <div class="left">
+                    <div class="avatar-preview" id="avatarPreview">
+                        <!-- default avatar (initial letter) -->
+
+                    </div>
+
+                    <label class="upload-btn">
+                        Upload photo
+                        <input type="file" onchange="updatePhoto(event)" id="photoInput" accept="image/*">
+                    </label>
+
+                    <button class="btn btn-outline" id="removePhoto">Remove photo</button>
+
+                </div>
+
+                <div class="right">
+                    <div class="field">
+                        <label>Full name</label>
+                        <input type="text" id="fullname" placeholder="Enter your name">
+                    </div>
+
+
+
+                    <div class="actions-row">
+                        <button class="btn btn-primary" id="saveProfile">Save profile</button>
+                        <span class="saved-msg" id="profileSaved" hidden>Saved ✓</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card password-card">
+            <h3>Change password</h3>
+            <div class="field">
+                <label>Current password</label>
+                <input type="password" id="currentPassword" placeholder="Current password">
+            </div>
+            <div class="field">
+                <label>New password</label>
+                <input type="password" id="newPassword" placeholder="New password">
+            </div>
+            <div class="field">
+                <label>Confirm new password</label>
+                <input type="password" id="confirmPassword" placeholder="Confirm new password">
+            </div>
+            <div class="actions-row">
+                <button class="btn btn-primary" id="changePassword">Change password</button>
+                <span class="saved-msg" id="passwordMsg" hidden></span>
+            </div>
+        </section>
+
+
+
+    </main>
+
+
+
+</body>
+
+</html>
+<script src="../js/profile.js"></script>

@@ -14,6 +14,7 @@ console.log(firebase);
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
+var provider = new firebase.auth.GoogleAuthProvider();
 
 
 function signIn() {
@@ -46,4 +47,32 @@ function signIn() {
 function setLoadingState(bool) {
     button.innerHTML = bool ? 'loading...' : 'sign up'
     button.disabled = bool
+}
+
+
+function signInWithGoogle() {
+    auth
+        .signInWithPopup(provider)
+        .then((result) => {
+            /** @type {firebase.auth.OAuthCredential} */
+            var credential = result.credential;
+
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            var token = credential.accessToken;
+            // The signed-in user info.
+            var user = result.user;
+            // IdP data available in result.additionalUserInfo.profile.
+            // ...
+            window.location.href = '../pages/dashboard.html'
+        }).catch((error) => {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // The email of the user's account used.
+            var email = error.email;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+            alert(errorMessage)
+            // ...
+        });
 }

@@ -1,0 +1,165 @@
+:root {
+  --accent: #6944c5;
+  --primary: #fff;
+  --bg: #f3f1f8;
+  --muted: #6b6f76;
+}
+
+* {
+  box-sizing: border-box
+}
+
+body.profile-root {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, #eae8f3, #f8f7fb);
+  margin: 0;
+  color: #1e1f24
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(30, 31, 36, 0.04)
+}
+
+.container {
+  max-width: 980px;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 18px;
+  padding: 0 12px
+}
+
+.card {
+  background: var(--primary);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(30, 31, 36, 0.04)
+}
+
+.profile-card h2 {
+  margin: 0 0 6px
+}
+
+.muted {
+  color: var(--muted);
+  margin-bottom: 12px
+}
+
+.profile-grid {
+  display: flex;
+  gap: 18px
+}
+
+.left {
+  width: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px
+}
+
+.avatar-preview {
+  width: 150px;
+  height: 150px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #7b5cff, #6944c5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden
+}
+
+.avatar-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover
+}
+
+.avatar-letter {
+  font-size: 64px;
+  color: #fff;
+  font-weight: 800
+}
+
+.upload-btn {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  cursor: pointer
+}
+
+.upload-btn input {
+  display: none
+}
+
+.btn {
+  border: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(30, 31, 36, 0.06)
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px
+}
+
+.field label {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 6px
+}
+
+.field input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(30, 31, 36, 0.06)
+}
+
+.actions-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px
+}
+
+.password-card h3 {
+  margin-top: 0
+}
+
+.saved-msg {
+  color: green;
+  font-weight: 600
+}
+
+@media(max-width:880px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .left {
+    width: 120px
+  }
+
+  .avatar-preview {
+    width: 120px;
+    height: 120px
+  }
+}

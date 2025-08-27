@@ -45,12 +45,12 @@ function signUp() {
                     console.log(user);
                     alert('sign up successful')
                     setLoadingState(false)
-                    // window.location.href = '../ecom-app/pages/signin.html'
+                    window.location.href = '../ecom-app/pages/signin.html'
                 }).catch((error) => {
                     console.log(user);
                     alert('sign up successful, without updating users name')
                     setLoadingState(false)
-                    // window.location.href = '../ecom-app/pages/signin.html'
+                    window.location.href = '../ecom-app/pages/signin.html'
                 });
 
 
