@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #error {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <!-- onblur="removeErrorText()"  -->
+        <input id="input" type="text" oninput="checkPassword()">
+        <br>
+        <small id="error"> </small>
+    </div>
+    <button onclick="submitForm()"> submit</button>
+
+</body>
+
+</html>
+<script>
+
+    let emailPattern = /^[o-y]ez{2}ello {1,}my f{3}riend$/i
+
+    let word = 'yezzello                              my Fffriend'
+    console.log(emailPattern.test(word));
+
+    let abPattern = /^ab[A-Z0-9]+ab$/i
+    let abWord = 'abbbbbbbb908383ab'
+    console.log(abPattern.test(abWord));
+
+    // d D w W s S
+    //d- digit : only numbers
+    //D- non digit : alphabets , space , special characters , underscore
+    //w- word chars : alphabets , underscore , numbers 
+    //W- non word chars : special characters except underscore , space
+    //s- space char: whitespace
+    //S- non space chars: every other character except whitespace
+
+    let symPattern = /^\D\w\s{4}/
+    let word2 = 'y9 7dlskjbvdbnsm,lxmjchbghdjkmnb'
+    console.log(symPattern.test(word2));
+
+    let pattern = /[^z]{2}/
+    let myword = '  zz'
+    console.log(pattern.test(myword));
+
+
+    // 56wisdom_@gmail.com
+
+    //mail regex
+    let emailRegex = /^[a-zA-Z0-9][-\w.+]+@[a-zA-Z]{1,}(.[a-zA-Z]{2,4}){1,3}$/
+    let email = 'wisdom_@gmail.co.uk'
+    console.log(emailRegex.test(email));
+
+    //phone number regex
+    '+234 8164934974'
+    let phoneNumberRegex = /^[+][0-9]{1,3}[0-9]{10,13}$/
+    let naijaPhone = /^[+]234([8-9][0-1]||[7][0])[0-9]{8}$/
+    let num = '+2348056784321'
+    console.log(naijaPhone.test(num));
+
+    //secure url
+    // 'https://www.google.com' // https://facebook.com/  https://chatgpt.com/c/6881fc1f-376c-8010-9d09-ee64bce9cdc1
+    let secureRegexUrl = /^https:[/]{2}(w{3}.){0,1}[a-zA-Z]+(.[a-zA-Z]{2,4}){1,3}\S+$/
+    let site = 'https://www.google.com'
+    let secSite = 'https://facebook.com'
+    let thirdSite = 'https://chatgpt.com/c/6881fc1f-376c-8010-9d09-ee64bce9cdc1'
+    console.log(secureRegexUrl.test(site));
+    console.log(secureRegexUrl.test(secSite));
+    console.log(secureRegexUrl.test(thirdSite));
+
+    // strongPassword
+    let password = 'AAAAAAAAAl0&'
+
+    // console.log(strongPasswordRegex.test(password));
+
+
+
+    function checkPassword() {
+        let input = document.querySelector('#input')
+        let strongPasswordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[\W_])[\S]{8,}$/
+        let capitalLetterRegex = /[A-Z]/
+        let smallLetterRegex = /[a-z]/
+        let numberRegex = /[0-9]/
+        let symbolRegex = /[\W_]/
+        document.querySelector('#error').style.display = 'block'
+        if (strongPasswordRegex.test(input.value.trim())) {
+            document.querySelector('#error').innerHTML = 'Strong Password'
+
+            document.querySelector('#error').style.color = 'green'
+            return true
+        } else {
+
+            document.querySelector('#error').style.color = 'red'
+
+            if (!capitalLetterRegex.test(input.value.trim())) {
+                document.querySelector('#error').innerHTML = 'Make sure there is at least one capital letter'
+            } else if (!smallLetterRegex.test(input.value.trim())) {
+                document.querySelector('#error').innerHTML = 'Make sure there is a small letter'
+            } else if (!numberRegex.test(input.value.trim())) {
+                document.querySelector('#error').innerHTML = 'Make sure there is at least a number'
+            } else if (!symbolRegex.test(input.value.trim())) {
+                document.querySelector('#error').innerHTML = 'Make sure there is at least a symbol'
+            } else {
+                document.querySelector('#error').innerHTML = 'Must be at least 8 characters and 20 atmost'
+            }
+
+            return false
+        }
+
+    }
+
+    // function removeErrorText() {
+    //     document.querySelector('#error').style.display = 'none'
+    // }
+
+    function submitForm() {
+        if (!checkPassword()) {
+            alert('you cant submit at the moment , give us a strong password')
+
+        } else {
+            alert('you can submit')
+        }
+    }
+
+
+
+
+</script>

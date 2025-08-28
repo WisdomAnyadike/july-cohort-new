@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/dashboard.css">
     <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-database-compat.js"></script>
 </head>
 
 <body class="app-root">
@@ -65,8 +66,9 @@
                 <div class="chat-sub">Online</div>
             </header>
 
+
             <div class="messages" id="messages">
-                <div class="msg incoming">
+                <!-- <div class="msg incoming">
                     <div class="bubble">Hey! Ready to test the new flow?</div>
                     <div class="meta">2:10 PM</div>
                 </div>
@@ -74,18 +76,15 @@
                 <div class="msg outgoing">
                     <div class="bubble">Almost — pushing the update now.</div>
                     <div class="meta">2:11 PM</div>
-                </div>
+                </div> -->
 
-                <div class="msg incoming">
-                    <div class="bubble">Nice. I'll check after deploy.</div>
-                    <div class="meta">2:12 PM</div>
-                </div>
+              
             </div>
 
             <div class="composer">
                 <button class="attach" title="Attach">＋</button>
                 <textarea id="messageInput" placeholder="Type a message..." rows="1"></textarea>
-                <button class="send" id="sendBtn">Send ➤</button>
+                <button class="send" onclick="sendMessage()" id="sendBtn">Send ➤</button>
             </div>
         </section>
 

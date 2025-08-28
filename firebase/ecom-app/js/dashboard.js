@@ -1,6 +1,7 @@
 const firebaseConfig = {
     apiKey: "AIzaSyBdldmLZPlGIxUtUmJkkSpsFixhlPLut_Q",
     authDomain: "julyapp-2ab24.firebaseapp.com",
+    databaseURL: "https://julyapp-2ab24-default-rtdb.firebaseio.com",
     projectId: "julyapp-2ab24",
     storageBucket: "julyapp-2ab24.firebasestorage.app",
     messagingSenderId: "883520818669",
@@ -12,6 +13,10 @@ console.log(firebase);
 
 const app = firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
+const database = firebase.database();
+let chatIndex
+
+
 
 function checkUserAuth() {
     auth.onAuthStateChanged((user) => {
@@ -30,6 +35,8 @@ function checkUserAuth() {
 }
 
 checkUserAuth()
+
+
 
 function logOut() {
     let isConfirmed = window.confirm('are you sure you want to logout?')
@@ -60,3 +67,66 @@ function logOut() {
 // else {
 //     console.log('wow');
 // }
+
+
+function sendMessage() {
+    if (!messageInput.value.trim()) {
+        alert('please attach a message')
+        return
+    }
+
+    if (isNaN(chatIndex) || chatIndex < 0) {
+        alert('cant sent message at the moment')
+        return
+    }
+
+
+
+    let user = auth.currentUser
+
+    database.ref(`Chats/${chatIndex}`).set({
+        id: user.uid,
+        sender: user.displayName,
+        message: messageInput.value.trim(),
+        time: new Date().toLocaleTimeString()
+    }).then(() => {
+
+        messageInput.value = ''
+    }).catch((err) => {
+        alert(err.message)
+    })
+
+
+}
+
+
+function displayMessages() {
+    messages.innerHTML = 'loading...'
+    var starCountRef = database.ref('Chats');
+
+    starCountRef.on('value', (snapshot) => {
+        const data = snapshot.val() || [];
+        chatIndex = data.length
+
+        messages.innerHTML = ''
+
+        if (data.length === 0) {
+            messages.innerHTML = 'no messages atm ..'
+            return
+        }
+
+        data.forEach((element, i) => {
+            let designClass = auth.currentUser.uid === element.id ? 'outgoing' : 'incoming'
+            messages.innerHTML += ` <div class="msg ${designClass}">
+            <div class="bubble"> ${element.message}</div>
+            <div class="meta">${element.sender}</div>
+            <div class="meta">${element.time}</div>
+        </div> `
+
+        });
+
+    });
+
+}
+
+displayMessages()
